@@ -1,0 +1,146 @@
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="body" style="border-spacing: 0;border-collapse: collapse;min-width: 100%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;margin: 0;padding: 0;background-color: #eee;font-family: Roboto, Helvetica, Arial, sans-serif;width: 100% !important;">
+    <tbody>
+        <tr>
+            <td bgcolor="#ffffff" valign="top" width="100%">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0;border-collapse: collapse;">
+                    <tr>
+                        <td style="background-color:#0DA58E;">
+                            <table class="table-content" align="center" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0;border-collapse: collapse;">
+                                <tr>
+                                    <td width="590" style="padding-right:10px;padding-left:10px;padding-top:15px;padding-bottom:15px;">
+                                        <img alt="elmah.io" width="41" height="30" id="svglogo" src="cid:svglogo" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: auto;max-width: 100%;float: left;clear: both;display: block;">
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table align="center" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0;border-collapse: collapse;">
+                                <tr>
+                                    <td width="590" style="font-size: 15px; color: #333333;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              font-weight: normal; text-align: left; line-height: 24px; vertical-align: top; padding-top:30px;padding-bottom:40px;padding-right:10px;padding-left:10px;">
+
+                                        <!-- Content start -->
+
+                                        <h2>Daily summary for log <a href="https://elmah.io/errorlog/search/?logId={{logid}}" style="color: #00a876;">{{name}}</a></h2>
+                                        <br>
+
+
+                                        <table class="summaries">
+                                            <tr>
+                                                <td style="padding-right: 40px;">
+                                                    <div class="label">Total</div>
+                                                    <div class="value" style="font-size: 40px;margin-top: 10px;"><a style="color:#00a876;" href="https://elmah.io/errorlog/search/?logId={{logid}}&freeText=*">{{total}}</a></div>
+                                                </td>
+                                                <td class="critical" style="padding-right: 40px;color: #e6614f;">
+                                                    <div class="label">Critical</div>
+                                                    <div class="value" style="font-size: 40px;margin-top: 10px;"><a style="color:#00a876;" href="https://elmah.io/errorlog/search/?logId={{logid}}&freeText=severity%3AError%20OR%20severity%3AFatal">{{criticalCount}}</a></div>
+                                                </td>
+                                                <td style="padding-right: 40px;">
+                                                    <div class="label">Unique</div>
+                                                    <div class="value" style="font-size: 40px;margin-top: 10px;"><a style="color:#00a876;" href="https://elmah.io/errorlog/search/?logId={{logid}}&groupBy=message">{{unique}}</a></div>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+
+                                        <br><br><br>
+
+                                        <table class="barchart" cellpadding="1" cellspacing="0" style="font-size: 9px;line-height: 15px;table-layout: fixed;text-align: center;width: 100%;height: 226px;">
+                                            <tr mc:edit="chart">
+                                                {{#each chart}}
+                                                <td style="height: 200px; vertical-align: bottom;">
+                                                    <span unsupported_class="label" style="background-color: black; border-radius: 4px; color: white; margin-top: -30px; padding: 0 3px;">
+                                                        {{this.value}}
+                                                    </span>
+                                                    <div unsupported_class="bar" style="background: #0DA58E; border: 1px solid white; height: {{this.height}}%; min-height: {{this.height}}%; max-height: {{this.height}}%; padding: 1px 2px 0;"></div>
+                                                </td>
+                                                {{/each}}
+                                            </tr>
+                                        </table>
+
+
+                                        <br>
+                                        <h3 style="color: #e6614f;">Critical</h3>
+                                        {{#if anycritical}}
+                                        <table class="errorlist" cellpadding="5" cellspacing="0" mc:edit="critical">
+                                            {{#each critical}}
+                                            <tr>
+                                                <td valign="top" class="counter" style="text-align: right;"><span style="background-color: #eee; border-radius: 2px; padding: 1px 5px;">{{count}}</span></td>
+                                                <td valign="top">&times;</td>
+                                                <td><a style="color:#00a876;" href="https://elmah.io/errorlog/search/?logId={{logId}}&freeText=message.raw%3A%22{{message}}%22">{{message}}</a></td>
+                                            </tr>
+                                            {{/each}}
+                                        </table>
+                                        {{else}}
+                                        <div>No critical errors.</div>
+                                        {{/if}}
+                                        <br>
+
+                                        <h3>Frequent</h3>
+                                        {{#if anyfrequent}}
+                                        <table class="errorlist" cellpadding="5" cellspacing="0" mc:edit="frequent">
+                                            {{#each frequent}}
+                                            <tr>
+                                                <td valign="top" class="counter" style="text-align: right;"><span style="background-color: #eee; border-radius: 2px; padding: 1px 5px;">{{count}}</span></td>
+                                                <td valign="top">&times;</td>
+                                                <td><a style="color:#00a876;" href="https://elmah.io/errorlog/search/?logId={{logId}}&freeText=message.raw%3A%22{{message}}%22">{{message}}</a></td>
+                                            </tr>
+                                            {{/each}}
+                                        </table>
+                                        {{else}}
+                                        <div>No frequent errors.</div>
+                                        {{/if}}
+
+                                        <!-- Content end -->
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="footer" style="background-color: #444; color: #929292;">
+                            <table align="center" class="footercontents" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <td style="width: 590px;">
+                                        <div class="footer-main">
+                                            <div style="text-align: center;margin: 20px 0px 30px;">
+                                                <ul style="text-align: center;margin: 0px 0px 10px -5px;padding: 0px;">
+                                                    <li style="box-sizing: border-box;display: inline-block;padding: 0px 5px;">
+                                                        <a href="https://twitter.com/elmah_io" style="box-shadow: rgb(68, 68, 68) 0px 0px 0px 11px;box-sizing: border-box;display: inline-block;width: 40px;background: rgb(68, 68, 68) none repeat scroll 0% 0% / auto padding-box border-box;border: 1px solid rgb(255, 255, 255);border-radius: 60px 60px 60px 60px;padding: 11px;">
+                                                            <img id="twitterlogo" src="cid:twitterlogo" style="display: inline-block;height: 17px;width: 15px;"/>
+                                                        </a>
+                                                    </li>
+                                                    <li style="box-sizing: border-box;display: inline-block;padding: 0px 5px;">
+                                                        <a href="https://www.facebook.com/elmahdotio/" style="box-shadow: rgb(68, 68, 68) 0px 0px 0px 11px;box-sizing: border-box;display: inline-block;width: 40px;background: rgb(68, 68, 68) none repeat scroll 0% 0% / auto padding-box border-box;border: 1px solid rgb(255, 255, 255);border-radius: 60px 60px 60px 60px;padding: 11px;">
+                                                            <img id="facebooklogo" src="cid:facebooklogo" style="display: inline-block;height: 17px;width: 15px;"/>
+                                                        </a>
+                                                    </li>
+                                                    <li style="box-sizing: border-box;display: inline-block;padding: 0px 5px;">
+                                                        <a href="https://plus.google.com/+ElmahIoPlus" style="box-shadow: rgb(68, 68, 68) 0px 0px 0px 11px;box-sizing: border-box;display: inline-block;width: 40px;background: rgb(68, 68, 68) none repeat scroll 0% 0% / auto padding-box border-box;border: 1px solid rgb(255, 255, 255);border-radius: 60px 60px 60px 60px;padding: 11px;">
+                                                            <img id="googlelogo" src="cid:googlelogo" style="display: inline-block;height: 17px;width: 15px;"/>
+                                                        </a>
+                                                    </li>
+                                                    <li style="box-sizing: border-box;display: inline-block;padding: 0px 5px;">
+                                                        <a href="https://www.linkedin.com/company/5354798" style="box-shadow: rgb(68, 68, 68) 0px 0px 0px 11px;box-sizing: border-box;display: inline-block;width: 40px;background: rgb(68, 68, 68) none repeat scroll 0% 0% / auto padding-box border-box;border: 1px solid rgb(255, 255, 255);border-radius: 60px 60px 60px 60px;padding: 11px;">
+                                                            <img id="linkedinlogo" src="cid:linkedinlogo" style="display: inline-block;height: 17px;width: 15px;"/>
+                                                        </a>
+                                                    </li>
+                                                </ul><hr style="width: 740px;border-bottom: 0px none rgb(146, 146, 146);margin: -31px 0px 40px;" /> <small style="color: rgb(119, 119, 119);">Say hello on social media | <a style="color: rgb(119, 119, 119);" href="https://elmah.io/unsubscribe/dailydigestemail?secret={{xxx}}">Unsubscribe</a></small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<style>
+    @import url(http://fonts.googleapis.com/css?family=Roboto);
+</style>
